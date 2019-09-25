@@ -9,6 +9,10 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 
 import java.net.UnknownHostException;
 
+/**
+ * 解决从rabbitmq存到redis中的解码可读问题
+ * @author GuoZhong Xu
+ */
 @Configuration
 public class MyRedisConfig {
     @Bean

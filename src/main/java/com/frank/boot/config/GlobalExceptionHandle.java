@@ -7,6 +7,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.HashMap;
 import java.util.Map;
 
+
+/**
+ * 其抽象级别应该是用于对Controller进行“切面”环绕的
+ * @author GuoZhong Xu
+ */
 @ControllerAdvice
 public class GlobalExceptionHandle {
     @ResponseBody

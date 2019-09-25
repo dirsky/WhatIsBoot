@@ -7,19 +7,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @Author: GuoZhong Xu
- * @Date: 2019/05/13 11:59
- * @Version 1.0
+ * 通过class类来实现对shiro的配置，其本质如同直接在ini文件内进行配置
+ * @author GuoZhong Xu
+ * @date 2019/05/13 11:59
+ * @version 1.0
  */
 @Configuration
 public class MyShiroConfig {
 
-
     /**
-     * 凭证匹配器
-     * （由于我们的密码校验交给Shiro的SimpleAuthenticationInfo进行处理了
-     * ）
-     * @return
+     * 凭证匹配器（由于我们的密码校验交给Shiro的SimpleAuthenticationInfo进行处理了）
+     * @return 返回HashedCredentialsMatcher并注入bean直接生效
      */
     @Bean
     public HashedCredentialsMatcher hashedCredentialsMatcher(){
@@ -30,6 +28,12 @@ public class MyShiroConfig {
         hashedCredentialsMatcher.setHashIterations(2);
         return hashedCredentialsMatcher;
     }
+
+    /**
+     * 将自定义ShiroRealm配置给shiro的ShiroRealm
+     * ？疑惑：为啥要注入bean，不是在getSecurityManager引用了吗？
+     * @return 自定义ShiroRealm
+     */
     @Bean
     public ShiroRealm getShiroRealm() {
         ShiroRealm shiroRealm = new ShiroRealm();
@@ -37,6 +41,10 @@ public class MyShiroConfig {
         return shiroRealm;
     }
 
+    /**
+     * 将ShiroRealm配置给shiro的SecurityManager
+     * @return SecurityManager
+     */
     @Bean
     public SecurityManager getSecurityManager() {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
