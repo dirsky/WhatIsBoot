@@ -21,6 +21,9 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+
+    private String prefix = "system/user";
+
     @Autowired
     private UserService userService;
 
@@ -46,14 +49,14 @@ public class UserController {
     @RequestMapping("")
     public String index(User user, Model model) {
         model.addAttribute("list", userService.showAll());
-        return "user_add";
+        return prefix + "user_add";
     }
 
     @RequestMapping("/edit")
     public String edit(Integer id, Model model) {
         User user = userService.findById(id);
         model.addAttribute("user", user);
-        return "user_edit";
+        return prefix + "user_edit";
     }
 
     @PostMapping("/edit")

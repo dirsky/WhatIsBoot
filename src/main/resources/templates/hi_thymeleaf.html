@@ -110,12 +110,9 @@ resources/templates目录是安全的。意味着该目录下的内容是不允�
         <th>Age</th>
     </tr>
     <tr th:each="maps : ${userMap}">
-        <td th:each="entry:${maps}"
-            th:text="${entry.value.id}" ></td>
-        <td th:each="entry:${maps}"
-            th:text="${entry.value.name}"></td>
-        <td th:each="entry:${maps}"
-            th:text="${entry.value.age}"></td>
+        <td th:each="entry:${maps}" th:text="${entry.value.id}" ></td>
+        <td th:each="entry:${maps}" th:text="${entry.value.name}"></td>
+        <td th:each="entry:${maps}" th:text="${entry.value.age}"></td>
     </tr>
 </table>
 <br/>
