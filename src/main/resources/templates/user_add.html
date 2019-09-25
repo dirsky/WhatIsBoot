@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>user_add</title>
+</head>
+<body>
+<form th:action="@{/user/add}" method="post">
+    用户姓名：<input type="text" name="name"/>
+    <font color="red"
+          th:errors="${user.name}"></font>
+    <br/>
+    用户年龄：<input type="text" name="age"/>
+    <font color="red"
+          th:errors="${user.age}"></font><br/>
+    <input type="submit" value=" 确定 "/><br/>
+</form>
+
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>operation</th>
+    </tr>
+    <tr th:each="u : ${list}">
+        <td th:text="${u.id}"></td>
+        <td th:text="${u.name}"></td>
+        <td th:text="${u.age}"></td>
+        <td>
+            <a th:href="@{/user/edit(id=${u.id})}">edit</a>
+            <a th:href="@{/user/delete(id=${u.id})}">delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

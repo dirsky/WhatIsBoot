@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>Hello</title>
+</head>
+<body>
+<h1 th:text="${name}">Candy is Girl</h1>
+this is thyme leaf<br/>
+resources/templates目录是安全的。意味着该目录下的内容是不允许外界直接访问的。
+<hr/>
+<span th:text="Hello"></span>
+<br/>
+<span th:text="${msg}"></span>
+<br/>
+<input type="text" name="username" th:value="${msg}"/>
+
+
+<br/>
+<span th:text="${#strings.isEmpty(key)}"></span>
+<br/>
+<span th:text="${#strings.contains(msg,'Boot')}"></span>
+<br/>
+<span th:text="${#strings.contains(msg,'boot')}"></span>
+<br/>
+<span th:text="${#strings.length(msg)}"></span>
+<br/>
+<span th:text="${#strings.substring(msg,3)}"></span>
+<br/>
+<span th:text="${#strings.toUpperCase(msg)}"></span>
+
+
+<br/>
+<span th:text="${date}"></span>
+<br/>
+<span th:text="${#dates.format(date,'yyy/MM/dd')}"></span>
+
+
+<span th:if="${name} == 'frank'">
+本人
+</span>
+<span th:if="${name} != 'frank'">
+别人
+</span>
+
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Age</th>
+    </tr>
+    <tr th:each="u : ${list}">
+        <td th:text="${u.id}"></td>
+        <td th:text="${u.name}"></td>
+        <td th:text="${u.age}"></td>
+    </tr>
+</table>
+
+状态变量属性
+1,index:当前迭代器的索引 从 0 开始
+2,count:当前迭代对象的计数 从 1 开始
+3,size:被迭代对象的长度
+4,even/odd:布尔值，当前循环是否是偶数/奇数 从 0 开始
+5,first:布尔值，当前循环的是否是第一条，如果是返回 true 否则返回 false
+6,last:布尔值，当前循环的是否是最后一条，如果是则返回 true 否则返回 false
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Index</th>
+        <th>Count</th>
+        <th>Size</th>
+        <th>Even</th>
+        <th>Odd</th>
+        <th>First</th>
+        <th>lase</th>
+    </tr>
+    <tr th:each="u,var : ${list}">
+        <td th:text="${u.id}"></td>
+        <td th:text="${u.name}"></td>
+        <td th:text="${u.age}"></td>
+        <td th:text="${var.index}"></td>
+        <td th:text="${var.count}"></td>
+        <td th:text="${var.size}"></td>
+        <td th:text="${var.even}"></td>
+        <td th:text="${var.odd}"></td>
+        <td th:text="${var.first}"></td>
+        <td th:text="${var.last}"></td>
+    </tr>
+</table>
+
+<br/>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+    </tr>
+    <tr th:each="user : ${userMap}">
+        <td th:text="${user}"></td>
+    </tr>
+</table>
+<br/>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+    </tr>
+    <tr th:each="maps : ${userMap}">
+        <td th:each="entry:${maps}"
+            th:text="${entry.value.id}" ></td>
+        <td th:each="entry:${maps}"
+            th:text="${entry.value.name}"></td>
+        <td th:each="entry:${maps}"
+            th:text="${entry.value.age}"></td>
+    </tr>
+</table>
+<br/>
+<span th:text="${userMap}"></span>
+<br/>
+<br/>
+
+
+</body>
+</html>

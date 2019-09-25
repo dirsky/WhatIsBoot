@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 @NoArgsConstructor
@@ -13,7 +15,9 @@ import java.io.Serializable;
 @Data
 @Accessors(chain = true)
 @Slf4j
+@Entity
 public class Dept implements Serializable {
+    @Id
     private Long id;
     private String deptName;
 

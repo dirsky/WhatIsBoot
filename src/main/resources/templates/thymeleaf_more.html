@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>thymeleaf more</title>
+</head>
+<body>
+Request:<span th:text="${#httpServletRequest.getAttribute('req')}"></span>
+<br/>
+Session:<span th:text="${session.session}"></span>
+<br/>
+Application:<span th:text="${application.app}"></span>
+<br/>
+<a th:href="@{/thyme}">相对路径</a>
+<br/>
+<a th:href="@{/para(id=1,name=frank)}"> 相对路径-传参-restful</a>
+
+</body>
+</html>
