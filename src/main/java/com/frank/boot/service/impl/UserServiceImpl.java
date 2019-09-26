@@ -4,6 +4,8 @@ import com.frank.boot.entities.User;
 import com.frank.boot.mapper.UserMapper;
 import com.frank.boot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,12 +33,23 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectAll();
     }
 
+    /**
+     * Cacheable:对当前查询的对象做缓存处理
+     * @param id
+     * @return
+     */
     @Override
+    @Cacheable(value = "user")
     public User findById(Integer id) {
         return userMapper.selectById(id);
     }
 
+    /**
+     * CacheEvict清除缓存中以 users 缓存策略缓存的对象
+     * @param user
+     */
     @Override
+    @CacheEvict(value = "user",allEntries = true)
     public void edit(User user) {
         userMapper.update(user);
     }

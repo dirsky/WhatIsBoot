@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 
 /**
  * 说明@NotBlank: 判断字符串是否为 null 或者是空串(去掉首尾空格)。
@@ -19,7 +20,7 @@ import javax.validation.constraints.NotBlank;
  */
 
 @Data
-public class User {
+public class User implements Serializable {
     private Integer id;
     @NotBlank(message = "用户名填一下")
     private String name;

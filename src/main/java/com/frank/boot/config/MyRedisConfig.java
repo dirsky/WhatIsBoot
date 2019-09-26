@@ -16,10 +16,25 @@ import java.net.UnknownHostException;
 @Configuration
 public class MyRedisConfig {
     @Bean
-    public RedisTemplate<Object, Employee> empRedisTemplate(RedisConnectionFactory redisConnectionFactory) throws UnknownHostException {
-        RedisTemplate<Object, Employee> template = new RedisTemplate();
+    public RedisTemplate<String, Employee> empRedisTemplate(RedisConnectionFactory redisConnectionFactory) throws UnknownHostException {
+        RedisTemplate<String, Employee> template = new RedisTemplate();
         template.setConnectionFactory(redisConnectionFactory);
         Jackson2JsonRedisSerializer serializer = new Jackson2JsonRedisSerializer(Employee.class);
+        template.setDefaultSerializer(serializer);
+        return template;
+    }
+
+    /**
+     * 设置序列化的操作可以放在外面重置
+     * @param redisConnectionFactory
+     * @return
+     * @throws UnknownHostException
+     */
+    @Bean
+    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) throws UnknownHostException {
+        RedisTemplate<String, Object> template = new RedisTemplate();
+        template.setConnectionFactory(redisConnectionFactory);
+        Jackson2JsonRedisSerializer serializer = new Jackson2JsonRedisSerializer(Object.class);
         template.setDefaultSerializer(serializer);
         return template;
     }

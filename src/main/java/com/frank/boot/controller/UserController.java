@@ -38,8 +38,8 @@ public class UserController {
     public String add(@Valid User user, BindingResult bindingResult)
     {
         if (bindingResult.hasErrors()) {
-            System.out.println("校验有问题");
-            return "user_add";
+            System.out.println("校验有问题3");
+            return prefix + "/user_add";
         } else {
             userService.add(user);
         }
@@ -48,15 +48,16 @@ public class UserController {
 
     @RequestMapping("")
     public String index(User user, Model model) {
+        System.out.println("this is index2");
         model.addAttribute("list", userService.showAll());
-        return prefix + "user_add";
+        return prefix + "/user_add";
     }
 
     @RequestMapping("/edit")
     public String edit(Integer id, Model model) {
         User user = userService.findById(id);
         model.addAttribute("user", user);
-        return prefix + "user_edit";
+        return prefix + "/user_edit";
     }
 
     @PostMapping("/edit")
