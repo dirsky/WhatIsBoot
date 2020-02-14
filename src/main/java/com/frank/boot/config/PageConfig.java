@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  * @date Create in 16:24 2020/2/14
  */
 @Configuration
-public class BeanConfig {
+public class PageConfig {
     /**
      * 实现Mybatis-plus的分页功能
      * @return
