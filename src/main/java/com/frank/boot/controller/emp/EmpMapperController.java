@@ -3,6 +3,7 @@ package com.frank.boot.controller.emp;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.frank.boot.entities.Emp;
+import com.frank.boot.entities.Employee;
 import com.frank.boot.mapper.EmpMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -92,5 +93,11 @@ public class EmpMapperController {
         // 当然不通过.set("gender",0)语句也可以通过实体部分进行条件赋值
         wrapper.lt("age",10).set("gender",0);
         return empMapper.update(null, wrapper);
+    }
+
+    @GetMapping("/my")
+    public Emp mySelect(Long id) {
+        Emp employee = empMapper.mySelect(id);
+        return employee;
     }
 }

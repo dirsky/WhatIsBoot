@@ -11,4 +11,5 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface EmpMapper extends BaseMapper<Emp> {
+    Emp mySelect(Long id);
 }
