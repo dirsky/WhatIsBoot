@@ -13,4 +13,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class EmpServiceImpl extends ServiceImpl<EmpMapper, Emp> implements IEmpService {
+    @Override
+    public Emp mySelect(Long id) {
+        return this.baseMapper.mySelect(id);
+    }
 }
