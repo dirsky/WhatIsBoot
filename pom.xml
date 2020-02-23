@@ -27,9 +27,9 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <!-- 不传递，不打包 -->
+            <!-- 不打包 -->
             <scope>provided</scope>
-            <!-- 只当前项目使用，模块之间不传递 -->
+            <!-- 模块之间不传递 -->
             <optional>true</optional>
         </dependency>
         <dependency>
